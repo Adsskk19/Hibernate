@@ -1,0 +1,38 @@
+package com;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import com.model.Employees;
+
+public class Application {
+	public static void main(String[] args) {
+		
+		Configuration cfg = new Configuration();
+		
+		cfg.configure("hibernate.cfg.xml");
+		cfg.addAnnotatedClass(Employees.class);
+		
+		SessionFactory sessionFactory = cfg.buildSessionFactory();
+		//Provides a session
+		
+		Session session = sessionFactory.openSession(); 
+		//session which is interacting with database.
+		
+		Employees emp = new Employees(13,"ijk@gmail.com",34000);
+		
+		session.beginTransaction();
+		
+		session.persist(emp);
+		
+		session.getTransaction().commit();
+		
+		System.out.println("Inserted...");
+		
+		
+		
+		
+	}
+
+}
