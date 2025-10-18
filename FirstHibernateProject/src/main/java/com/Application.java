@@ -22,8 +22,9 @@ public class Application {
 		//Provides a session
 		
 		Session session = sessionFactory.openSession(); 
-		//session which is interacting with database.
-		
+		/*
+		 * session which is interacting with database.
+		 */		
 		Employee emp = new Employee("jkass@gmail.com",34000);
 		
 		session.beginTransaction();
